@@ -20,16 +20,13 @@ public class TicketMachine {
     }
 
     public void inserir(int quantia) throws PapelMoedaInvalidaException {
-        boolean achou = false;
-        for (int i = 0; i < papelMoeda.length && !achou; i++) {
+        for (int i = 0; i < papelMoeda.length; i++) {
             if (papelMoeda[i] == quantia) {
-                achou = true;
+                this.saldo += quantia;
+                return;
             }
         }
-        if (!achou) {
-            throw new PapelMoedaInvalidaException();
-        }
-        this.saldo += quantia;
+        throw new PapelMoedaInvalidaException();
     }
 
     public int getSaldo() {
